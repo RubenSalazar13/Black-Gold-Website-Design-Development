@@ -10,15 +10,7 @@
 </head>
 
 <body>
-
-<div class="topnav">
-  <a class="active" href="index.php">Home</a>
-  <a href="#services">Services</a>
-  <a href="schedule.php">Schedule Service</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact Us</a>
-</div>
-
+<?php include('navbar.php'); ?>
 <div class="hero-image">
   <div class="hero-text">
     <h1 style="font-size:50px">COMPLIMENTARY QUALITY SERVICES</h1>

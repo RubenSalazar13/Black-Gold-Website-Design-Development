@@ -10,21 +10,40 @@
 </head>
 
 <body>
-
-<div class="topnav">
-  <a class="active" href="index.php">Home</a>
-  <a href="#services">Services</a>
-  <a href="schedule.php">Schedule Service</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact Us</a>
-</div>
-<div class="coming-soon">
-  <center>
-    <h1>Coming Soon</h1>
-  </center>
+  <?php include('navbar.php'); ?>
+  <h1 class="appointment">Make an Appointment</h1>
+  <div class="scedule">
+    <form action="scedule.php">
+      <select id="year" name="year">
+        <option class="year" value="none">Select Year</option>
+      <?php 
+         for($i = 1950 ; $i < date('Y'); $i++){
+            echo "<option>$i</option>";
+         }
+      ?>
+      </select>
+    <br>
+    <select class="cars" name="cars" id="cars">
+    <option value="none">Make</option>
+    <option value="volvo">Ford</option>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>
+  <br>
+    <input type="submit" value="Submit">
+  </form>
 </div>
         <footer>
         <?php include('footer.php'); ?>
         </footer>
     </body>
 </html> 
+
+<?php
+//$years = array();    
+//for ($y = 1980, $now = date('Y'); $y <= $now; ++$y) {
+//    $years[$y] = array('value' => $y);
+//}
+?>
