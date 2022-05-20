@@ -281,7 +281,8 @@ select {
   font-family: 'Oswald', sans-serif;
   font-family: 'Playfair Display', serif;
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 40px;
+  color: #EFD345;
 }
 .pagebody-1 {
   width: 100%;
@@ -313,10 +314,6 @@ select {
   text-align: center;
   padding-top: 150px;
 }
-.pagebody-container h3{
-  font-size: 40px;
-  color: #EFD345;
-}
 .pagebody-2-left {
   text-align: center;
   font-size:50px;
@@ -334,6 +331,7 @@ select {
   display: flex;
   flex-wrap:wrap;
   margin-bottom: 20px;
+  margin-left: 30px;
 }
 .pictures {
   width:30%;
