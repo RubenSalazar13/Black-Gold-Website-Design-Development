@@ -136,7 +136,9 @@ body, html {
   font-family: 'Playfair Display', serif;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
-  border-top: solid, 1px, #f1c40f;
+  border-top-style: solid;
+  border-top-color: #f1c40f;
+  border-top-width: 1px;
 }
 .footer-h3{
   font-size: 30px;
