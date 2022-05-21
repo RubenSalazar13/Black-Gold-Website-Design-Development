@@ -285,7 +285,7 @@ select {
 }
 .pagebody-1 {
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   background-color: black;
   color: #f1c40f;
   display: flex;
@@ -295,7 +295,7 @@ select {
 }
 .pagebody-2 {
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   background-color: black;
   color: #f1c40f;
   display: flex;
@@ -343,7 +343,7 @@ select {
 }
 .pagebody-new {
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   background-color: white;
   color: black;
   display: flex;
