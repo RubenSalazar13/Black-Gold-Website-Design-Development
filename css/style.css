@@ -285,7 +285,7 @@ select {
 }
 .pagebody-1 {
   width: 100%;
-  height: 80vh;
+  height: 60vh;
   background-color: black;
   color: #f1c40f;
   display: flex;
@@ -295,7 +295,7 @@ select {
 }
 .pagebody-2 {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-color: black;
   color: #f1c40f;
   display: flex;
@@ -340,4 +340,31 @@ select {
 }
 .pictures img{
   border-radius: 5%;
+}
+.pagebody-new {
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+}
+.pagebody-new img{
+  border-radius: 60%;
+}
+.pagebody-new-left {
+  width: 60%;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  padding-top: 150px;
+}
+.pagebody-new-right {
+  width: 60%;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  padding-top: 150px;
+  width: 40%;
+  padding: 5%;
+  text-align: center;
 }
