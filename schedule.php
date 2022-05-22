@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,26 +13,23 @@
   <?php include('navbar.php'); ?>
   <h1 class="appointment">Make an Appointment</h1>
   <div class="scedule">
-    <form action="scedule.php">
-      <select id="year" name="year">
-        <option class="year" value="none">Select Year</option>
-      <?php 
-         for($i = 1950 ; $i < date('Y'); $i++){
-            echo "<option>$i</option>";
-         }
-      ?>
-      </select>
-    <br>
-    <select class="cars" name="cars" id="cars">
-    <option value="none">Make</option>
-    <option value="volvo">Ford</option>
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="opel">Opel</option>
-    <option value="audi">Audi</option>
-  </select>
+</head>
+<body>
+  <center>
+<form action="" method="post">
+<label>First Name :</label>
+<input type="text" name="First_Name" required placeholder="Please Enter First Name"/><br><br>
+<label>Last Name :</label>
+<input type="text" name="Last_Name" required placeholder="Please Enter Last Name"/><br><br>
+<label>Email   :</label>
+<input type="email" name="email" required placeholder="Email"/><br><br>
+<label>Address :</label>
+<input type="text" name="address" required placeholder="Please Enter Your City"/><br><br>
+
   <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value=" Submit Details " name="submit"/><br />
+</form>
+</div>
   </form>
 </div>
         <footer>
@@ -41,9 +38,27 @@
     </body>
 </html> 
 
-<?php
-//$years = array();    
-//for ($y = 1980, $now = date('Y'); $y <= $now; ++$y) {
-//    $years[$y] = array('value' => $y);
-//}
+<?php 
+if(isset($_POST["submit"])){
+include 'SQLConnect.php';
+
+$sql = "INSERT INTO user (First_Name, Last_Name, email, address)
+VALUES ('".$_POST["First_Name"]."','".$_POST["Last_Name"]."','".$_POST["email"]."','".$_POST["address"]."')";
+
+if ($conn->query($sql) === TRUE) {
+echo "
+    <script type= 'text/javascript'>
+        alert('New record created successfully');
+    </script>";
+} 
+else 
+{
+    echo 
+    "<script type= 'text/javascript'>
+        alert('Error: " . $sql . "<br>" . $conn->error."');
+    </script>";
+}
+
+$conn->close();
+}
 ?>
