@@ -23,6 +23,7 @@ else
   $con = mysqli_connect(HOST, USER, PASS, BASE);
 
 if(isset($_POST['login'])) {
+  $login = $_POST['login'];
   $email    = strip_tags($_POST['email']);
   $password = strip_tags($_POST['password']);
 
@@ -38,21 +39,35 @@ if(isset($_POST['login'])) {
 
   $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$hashed'";
   $query = mysqli_query($con, $sql);
+//print_r($_POST);
 
 if(mysqli_num_rows($query) > 0)
 
 {
   //Records matched process further
-  $_SESSION['email'] = $email;
-  $_SESSION['Customer_ID'] = $Customer_ID;
+  $_POST['email'] = $email;
+  $_POST['password'] = $hashed;
+
   isAllowed($email);
-  header('location: UserPortal.php');
- 
+  $_SESSION['login'] = $login;
+  $_SESSION['email'] = $email;
+
+  $row = $query->fetch_assoc();
+  $cust_id = $row['Customer_ID'];
+  // create a session, direct to the portal page
+  $_SESSION['Customer_ID'] = $cust_id;
+  header('location: portal.php');
+  exit;
+  
  } else {
     echo "<h1>You're Credentials Are Incorrect, Please Try Again...</h1>";
     }
   } 
 
+// Display Error
+if( isset($_GET['error'])) {
+ echo "<span style='color:red;text-align:center;font-size:55px;''>Please, Log in!</span>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +90,7 @@ if(mysqli_num_rows($query) > 0)
 </head>
 <body>
     <div class="login-content">
-      <form method="post" action="login.php" enctype="multipart/form-data">
+      <form method="POST" action="login.php" enctype="multipart/form-data">
         <h2 class="title">Welcome!</h2>
             <h2>Please, Log In</h2>
               <div class="input-div one">
@@ -90,12 +105,12 @@ if(mysqli_num_rows($query) > 0)
                  </div>
                  <div class="div">
                     <h5>Password</h5>
-                    <input name="password" type="password" placeholder="" class="input">
+                    <input type="password" name="password" type="password" placeholder="" class="input">
                  </div>
               </div>
               <a href="create-account.php">Create Account</a>
               <br>
-              <input type="submit" class="btn" value="Login" name="login">
+              <input type="submit" class="btn" value="login" name="login">
             </form>
         </div>
       </div>

@@ -94,7 +94,9 @@ END;
     <main>
     	<?php if (!isset($_SESSION['granted'])) : ?>
         <?php include('navbar.php'); ?>
-        <?php echo '<h1 class="Warning">Access Denied</h1>' ?>
+        <?php 
+		header('Location: login.php?error=');
+	 ?>
            <br>
         <?php else : ?>
         <?php include('navbarLoggedIn.php');?>

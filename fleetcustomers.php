@@ -1,4 +1,7 @@
- <!DOCTYPE html>
+<?php
+
+?>
+<!DOCTYPE html>
 <html>
 <body>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,12 +18,13 @@
 <div class="log-in">
     <h1 class="Fleet">Fleet Customers</h1>
         <h2 class="check">Check Status</h2>
-  <form action="fleetcustomers.php">
+    <form method="post" action="login.php" enctype="multipart/form-data">
     <label for="email"></label>
-    <input type="email" id="email" name="email" placeholder="Email">
+    <input type="email" id="email" name="email" placeholder="Email" required>
     <br>
     <label for="password"></label>
-    <input type="Password" id="password" name="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password" id="password" required>
+        <br>
     <input type="submit" value="Submit">
   </form>
 </div>

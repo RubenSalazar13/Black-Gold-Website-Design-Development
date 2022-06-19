@@ -14,7 +14,7 @@ function isAllowed($email="", $password="")
 	else
     {
   //$con = mysqli_connect("", "", "", "");
-  $con = mysqli_connect("localhost", "root", "", "user");
+  $con = mysqli_connect("localhost", "root", "", "blackoil");
   $sql = "SELECT * FROM user WHERE email = '$email';";
   $query = mysqli_query($con, $sql);
   $granted = mysqli_num_rows($query);

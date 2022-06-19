@@ -17,17 +17,13 @@
 <body>
   <center>
 <form action="" method="post">
-<label>First Name :</label>
-<input type="text" name="First_Name" required placeholder="Please Enter First Name"/><br><br>
-<label>Last Name :</label>
-<input type="text" name="Last_Name" required placeholder="Please Enter Last Name"/><br><br>
-<label>Email   :</label>
-<input type="email" name="email" required placeholder="Email"/><br><br>
-<label>Address :</label>
-<input type="text" name="address" required placeholder="Please Enter Your City"/><br><br>
-
+<label></label>
+<input type="email" name="email" required placeholder="Please Enter Email"/><br><br>
+<label></label>
+<input type="password" name="password" required placeholder="Please Enter Your Password"/><br><br>
   <br>
     <input type="submit" value=" Submit Details " name="submit"/><br />
+    <a href="CreateAccount.php">Create Account</a>
 </form>
 </div>
   </form>
@@ -39,26 +35,8 @@
 </html> 
 
 <?php 
-if(isset($_POST["submit"])){
 include 'SQLConnect.php';
 
-$sql = "INSERT INTO user (First_Name, Last_Name, email, address)
-VALUES ('".$_POST["First_Name"]."','".$_POST["Last_Name"]."','".$_POST["email"]."','".$_POST["address"]."')";
 
-if ($conn->query($sql) === TRUE) {
-echo "
-    <script type= 'text/javascript'>
-        alert('New record created successfully');
-    </script>";
-} 
-else 
-{
-    echo 
-    "<script type= 'text/javascript'>
-        alert('Error: " . $sql . "<br>" . $conn->error."');
-    </script>";
-}
 
-$conn->close();
-}
 ?>

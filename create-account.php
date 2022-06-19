@@ -10,7 +10,7 @@ if ($_SERVER['HTTP_HOST'] == "localhost")
   define("HOST", "localhost");
   define("USER", "root");
   define("PASS", "");
-  define("BASE", "user");
+  define("BASE", "blackoil");
 }
 else
 {

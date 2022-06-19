@@ -1,9 +1,11 @@
 <?php
-    session_start();
-    session_unset();
-    session_destroy();
-    session_write_close();
-    setcookie(session_name(),'',0,'/');
-    session_regenerate_id(true);
+// unset session/cookies
+
+$cs = array_keys($_COOKIE);
+for ($x=0;$x<count($cs);$x++) setcookie($cs[$x],"",time()-1);
+
+unset($_SESSION['email']); // this is the key to unsetting your session.
+session_destroy();
+session_commit();
  header('location: index.php');
  ?>
