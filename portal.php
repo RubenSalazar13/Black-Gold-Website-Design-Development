@@ -1,8 +1,6 @@
 <?php
-//get the user id from the session
+// Get the user id from the session
 session_start();
-
-//`Vehicle_Make`, `Vehicle_Year`, `Vehicle_Model`, `Sub_Model`, `Fuel_Type`, `Truck_Number`, `VIN`, `Engine`, `Oil_Change`, `Oil_Type`, `Oil_Capacity`, `Oil_FilterNumber`, `Air_Filter`, `Fuel_Filter`, `Water_Seperator`, `Cabin_Air_Filter`, `Wiper_Blade`, `Grease_Service`, `Comments`
 
 include_once('function.php'); 
 
@@ -36,59 +34,62 @@ if($result->num_rows==1){
 $result2 = $conn->query($vehicle_sql);
 if(!$result2) die($conn->error);
 
-// increment this ++i
 if($result2->num_rows > 0){
-    //$row = $result2->fetch_assoc();
-    foreach ($result2 as $row) {
-        echo $row['Vehicle_Make']."<br />\n";
-        echo $row['Vehicle_Year']."<br />\n";
-    }
-    // Vehicle info
-//    $Vehicle_Make  = $row['Vehicle_Make'];
-//    $Vehicle_Year  = $row['Vehicle_Year'];
-//    $Vehicle_Model = $row['Vehicle_Model'];
-//    $Sub_Model     = $row['Sub_Model'];
-//    $Fuel_Type     = $row['Fuel_Type'];
-//    $Truck_Number  = $row['Truck_Number'];
-
-    $resulthtml = '';// //RESULT HEAD// //RESULT BODY
-    $resulthtml .= '<table id="customers">';
-    //RESULT ROWS
-    foreach ($row as $key => $value) {
-//        echo $key;
-//        echo ' - $';
-//        echo $value;
-       foreach($row as $field => $value) { 
-           $recNew[$field][] = $value;
-       }
-    }
-    $i = 0;
-    //forloop
-//    $resulthtml .= '<tr>';
-//    $resulthtml .= '<th>Make</th>';
-//    $resulthtml .= '<th>Year</th>';
-//    $resulthtml .= '<th>Model</th>';
-//    $resulthtml .= '<th>Sub Model</th>';
-//    $resulthtml .= '<th>Fuel Type</th>';
-//    $resulthtml .= '<th>Number</th>';
-//    $resulthtml .= '<th>Edit</th>';
-//    $resulthtml .= '</tr>';
-//    $resulthtml .= '<tr>';
-//    $resulthtml .= '<td>'.$Vehicle_Make.'</td>';
-//    $resulthtml .= '<td>'.$Vehicle_Year.'</td>';
-//    $resulthtml .= '<td>'.$Vehicle_Model.'</td>';
-//    $resulthtml .= '<td>'.$Sub_Model.'</td>';
-//    $resulthtml .= '<td>'.$Fuel_Type.'</td>';
-//    $resulthtml .= '<td>'.$Truck_Number.'</td>';
-    $resulthtml .= '<td><button>Edit</button></td>';
-    $resulthtml .= '</tr>';
-    $resulthtml .= '</table>';
-  //END ROW
-  $i = $i + 1;
+        $i = 0;
+        $resulthtml = '';
+        // //RESULT HEAD// //RESULT BODY
+        $resulthtml .= '<table id="customers">';
+        $resulthtml .= '<tr>';
+        $resulthtml .= '<th>Make</th>';
+        $resulthtml .= '<th>Year</th>';
+        $resulthtml .= '<th>Model</th>';
+        $resulthtml .= '<th>Sub Model</th>';
+        $resulthtml .= '<th>Fuel Type</th>';
+        $resulthtml .= '<th>Number</th>';
+        $resulthtml .= '<th>VIN</th>';
+        $resulthtml .= '<th>Engine</th>';
+        $resulthtml .= '<th>Oil Change</th>';
+        $resulthtml .= '<th>Oil Type</th>';
+        $resulthtml .= '<th>Oil Capacity</th>';
+        $resulthtml .= '<th>Oil Filter Number</th>';
+        $resulthtml .= '<th>Air Filter</th>';
+        $resulthtml .= '<th>Fuel Filter</th>';
+        $resulthtml .= '<th>Water Seperator</th>';
+        $resulthtml .= '<th>Oil FilterNumber</th>';
+        $resulthtml .= '<th>Wiper Blade</th>';
+        $resulthtml .= '<th>Grease Service</th>';
+        $resulthtml .= '<th>Comments</th>';
+        $resulthtml .= '<th>Edit</th>';
+        $resulthtml .= '</tr>';
+        // Looping Through Keys and Values
+        foreach ($result2 as $row) {
+        $resulthtml .= '<tr>';
+        $resulthtml .= '<td>'.$row['Vehicle_Make'].'</td>';
+        $resulthtml .= '<td>'.$row['Vehicle_Year'].'</td>';
+        $resulthtml .= '<td>'.$row['Vehicle_Model'].'</td>';
+        $resulthtml .= '<td>'.$row['Sub_Model'].'</td>';
+        $resulthtml .= '<td>'.$row['Fuel_Type'].'</td>';
+        $resulthtml .= '<td>'.$row['Truck_Number'].'</td>';
+        $resulthtml .= '<td>'.$row['VIN'].'</td>';
+        $resulthtml .= '<td>'.$row['Engine'].'</td>';
+        $resulthtml .= '<td>'.$row['Oil_Change'].'</td>';
+        $resulthtml .= '<td>'.$row['Oil_Type'].'</td>';
+        $resulthtml .= '<td>'.$row['Oil_Capacity'].'</td>';
+        $resulthtml .= '<td>'.$row['Oil_FilterNumber'].'</td>';
+        $resulthtml .= '<td>'.$row['Air_Filter'].'</td>';
+        $resulthtml .= '<td>'.$row['Fuel_Filter'].'</td>';
+        $resulthtml .= '<td>'.$row['Water_Seperator'].'</td>';
+        $resulthtml .= '<td>'.$row['Cabin_Air_Filter'].'</td>';
+        $resulthtml .= '<td>'.$row['Wiper_Blade'].'</td>';
+        $resulthtml .= '<td>'.$row['Grease_Service'].'</td>';
+        $resulthtml .= '<td>'.$row['Comments'].'</td>';
+        $resulthtml .= '<td><button>Edit</button></td>';
+        $resulthtml .= '</tr>';
+        }
+        $resulthtml .= '</table>';
+        //END ROW
+        $i = $i + 1;
   }
-  //EMD RESULT ROWS
-  $resulthtml .= '</tbody>';
-  $resulthtml .= '</table>';
 
 // Check if the User is allowed
 if (isset($_SESSION['login']))
@@ -141,49 +142,6 @@ $change_personal_info = <<<END
 </html>
 END;
 
-//$change_vehicles_info;//
-
-//<html>
-//<form method='post'>
-//    <label>Vehicle Make:
-//        <input type='text' name='Vehicle_Make' value=$Vehicle_Make>
-//    </label><br>
-//    <label>Vehicle Year:
-//        <input type='text' name='Vehicle_Year' value=$Vehicle_Year>
-//    </label><br>
-//    <label>Model:
-//        <input type='text' name='Vehicle_Model' value=$Vehicle_Model>
-//    </label><br>
-//    <label>Sub-Model:
-//        <input type='text' name='Sub_Model' value=$Sub_Model>
-//    </label><br>
-//    <label>Fuel_Type:
-//        <input type='text' name='Fuel_Type' value=$Fuel_Type>
-//    </label><br>
-//    <label>Number:
-//        <input type='text' name='Truck_Number' value=$Truck_Number>
-//    </label><br>
-//    <input type='submit' name='changed_vehicles_info' value='update'>
-//</form>
-//</html>
-//This creates a new array composed/transposed with the field names as keys and
-//the "rowed" values as sub-arrays.
-
-echo "<table>\n";
-
-foreach ($recNew as $key => $values) // For every field name (id, name, last_name, gender)
-{
-    echo "<tr>\n"; // start the row
-    echo "\t<td>" . $key . "</td>\n" ; // create a table cell with the field name
-        foreach ($values as $cell) // for every sub-array iterate through all values
-        {
-           echo "\t<td>" . $cell . "</td>\n"; // write cells next to each other
-        }
-    echo "</tr>\n"; // end row
-
-}
-
-echo "</table>";
 
 ?>
 <!DOCTYPE html>
